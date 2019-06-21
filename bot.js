@@ -4,7 +4,7 @@ client.on('message', async message => {
  
    if (message.content.startsWith("$new")) {  
         const reason = message.content.split(" ").slice(1).join(" ");  
-        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`áÇÒã ÊÓæí ÑÊÈÉ ÇÓãåÇ \`Support Team\` æÊäØí ÇáÈæÊ ÇÏãäíÊÑ ÍÊÇ íÞÏÑ íÓæí ÇáÑæãÇÊ æíÚÏá ÈÑãÔäÇÊ`);
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`Ã¡Ã‡Ã’Ã£ ÃŠÃ“Ã¦Ã­ Ã‘ÃŠÃˆÃ‰ Ã‡Ã“Ã£Ã¥Ã‡ \`Support Team\` Ã¦ÃŠÃ¤Ã˜Ã­ Ã‡Ã¡ÃˆÃ¦ÃŠ Ã‡ÃÃ£Ã¤Ã­ÃŠÃ‘ ÃÃŠÃ‡ Ã­ÃžÃÃ‘ Ã­Ã“Ã¦Ã­ Ã‡Ã¡Ã‘Ã¦Ã£Ã‡ÃŠ Ã¦Ã­ÃšÃÃ¡ ÃˆÃ‘Ã£Ã”Ã¤Ã‡ÃŠ`);
         if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
         message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
             let role = message.guild.roles.find("name", "Support Team");
@@ -21,10 +21,10 @@ client.on('message', async message => {
                 SEND_MESSAGES: true,
                 READ_MESSAGES: true
             });
-            message.channel.send(`:white_check_mark: Êã ÇäÔÇÁ ÊÐßÑÊß, #${c.name}.`);
+            message.channel.send(`:white_check_mark: ÃŠÃ£ Ã‡Ã¤Ã”Ã‡Ã ÃŠÃÃŸÃ‘ÃŠÃŸ, #${c.name}.`);
             const embed = new Discord.RichEmbed()
                 .setColor(d1631e)
-                .addField(`Hey ${message.author.username}!`, `:white_check_mark:  Êã ÇäÔÇÁ ÊÐßÑÊß, #ticket`)
+                .addField(`Hey ${message.author.username}!`, `:white_check_mark:  ÃŠÃ£ Ã‡Ã¤Ã”Ã‡Ã ÃŠÃÃŸÃ‘ÃŠÃŸ, #ticket`)
                 .setTimestamp();
             c.send({
                 embed: embed
@@ -33,10 +33,10 @@ client.on('message', async message => {
     }
  
  
-  if (message.content.startsWith("-close")) {
+  if (message.content.startsWith("$close")) {
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
  
-       message.channel.send(`åá ÇäÊ ãÊÃßÏ ãä ÇÞÝÇáß ááÊÐßÑÉ ÇÐÇ ãÊÃßÏ ÇßÊÈconfirm`)
+       message.channel.send(`Ã¥Ã¡ Ã‡Ã¤ÃŠ Ã£ÃŠÃƒÃŸÃ Ã£Ã¤ Ã‡ÃžÃÃ‡Ã¡ÃŸ Ã¡Ã¡ÃŠÃÃŸÃ‘Ã‰ Ã‡ÃÃ‡ Ã£ÃŠÃƒÃŸÃ Ã‡ÃŸÃŠÃˆconfirm`)
            .then((m) => {
                message.channel.awaitMessages(response => response.content === 'confirm', {
                        max: 1,
@@ -47,7 +47,7 @@ client.on('message', async message => {
                        message.channel.delete();
                    })  
                    .catch(() => {
-                       m.edit('áã íÊã ÊÞÝíá ÇáÊßÊ').then(m2 => {
+                       m.edit('Ã¡Ã£ Ã­ÃŠÃ£ ÃŠÃžÃÃ­Ã¡ Ã‡Ã¡ÃŠÃŸÃŠ').then(m2 => {
                            m2.delete();
                        }, 3000);
                    });
